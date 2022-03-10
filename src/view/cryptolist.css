@@ -1,0 +1,14 @@
+.updateButton {
+    appearance: none;
+    border: none;
+    background-color: #6a040f;
+    color: #faa307;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 8px 20px;
+    cursor: pointer;
+  }
+  
+  .updateButton:hover {
+      opacity: 0.6;
+  }

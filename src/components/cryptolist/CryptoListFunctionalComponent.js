@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getCryptos } from "../../services/CryptoService";
+import "../../view/cryptolist.css";
 
 export const CryptoListFunctionalComponent = () => {
-  var [cryptos,setCryptos] = useState([])
+  var [cryptos, setCryptos] = useState([]);
   var retrieveCryptos = async () => setCryptos(await getCryptos());
   useEffect(() => {
-    retrieveCryptos()
-  })
-  
+    retrieveCryptos();
+  });
 
   var cryptosHtmlList = [];
   cryptos.forEach((crypto) => {
@@ -21,8 +21,10 @@ export const CryptoListFunctionalComponent = () => {
   });
   return (
     <>
-    <h1>Functional component</h1>
-      <button onClick={() => retrieveCryptos()}>Actualizar</button>
+      <h1>Functional component</h1>
+      <button onClick={() => retrieveCryptos()} className="updateButton">
+        Actualizar
+      </button>
       <table style={{ width: "25%", textAlign: "left" }}>
         <thead>
           <tr>

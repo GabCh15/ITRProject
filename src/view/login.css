@@ -5,8 +5,9 @@
   border: none;
   background-color: #0077b6;
   color: #48cae4;
-  border-radius: 5px;
-  padding: 4px 10px;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: bold;
   cursor: pointer;
 }
 
