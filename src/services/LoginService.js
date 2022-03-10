@@ -1,7 +1,4 @@
-export const loginFunction = (loginState) => {
-    return new Promise((resolve, reject) => {
-      resolve(!loginState);
-    });
-  };
-
-  
+export const loginFunction = (loginState) =>
+  new Promise((resolve, reject) => {
+    resolve(!loginState);
+  });
