@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import "../../view/login.css";
-
-const loginFunction = (loginState) => {
-  return new Promise((resolve, reject) => {
-    resolve(!loginState);
-  });
-};
-
+import {loginFunction} from "../../services/LoginService"
 export const LoginFunctionalComponent = () => {
   const [login, setLogin] = useState(false);
 

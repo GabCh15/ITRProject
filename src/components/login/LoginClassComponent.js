@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import "../../view/login.css";
+import {loginFunction} from "../../services/LoginService"
 
-const loginFunction = (loginState) => {
-  return new Promise((resolve, reject) => {
-    resolve(!loginState);
-  });
-};
 
 export default class LoginClassComponent extends Component {
   constructor() {
