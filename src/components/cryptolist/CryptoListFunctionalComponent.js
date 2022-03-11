@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { getCryptos } from "../../services/CryptoService";
+import { LoadingFunctionalComponent } from "../LoadingFunctionalComponent";
 import "../../view/cryptolist.css";
 
 export const CryptoListFunctionalComponent = () => {
-  var [cryptos, setCryptos] = useState([]);
-  var retrieveCryptos = async () => setCryptos(await getCryptos());
+  var [cryptos, setCryptos] = useState(null);
+  var [loading, setLoading] = useState(false);
+  var retrieveCryptos = async () => {
+    setLoading(true);
+    setCryptos(await getCryptos());
+    setLoading(false);
+  };
   useEffect(() => {
-    retrieveCryptos();
+    if (!cryptos) retrieveCryptos();
   });
 
   var cryptosHtmlList = [];
-  cryptos.forEach((crypto) => {
-    cryptosHtmlList.push(
-      <tr key={crypto.symbol}>
-        <td>{crypto.name} </td>
-        <td>{crypto.symbol} </td>
-        <td>{crypto.usdPrice}</td>
-      </tr>
-    );
-  });
+  if (cryptos) {
+    cryptos.forEach((crypto) => {
+      cryptosHtmlList.push(
+        <tr key={crypto.symbol}>
+          <td>{crypto.name} </td>
+          <td>{crypto.symbol} </td>
+          <td>{crypto.usdPrice}</td>
+        </tr>
+      );
+    });
+  }
   return (
     <>
       <h1>Functional component</h1>
@@ -33,8 +41,9 @@ export const CryptoListFunctionalComponent = () => {
             <th>USD Price</th>
           </tr>
         </thead>
-        <tbody>{cryptosHtmlList}</tbody>
+        <tbody>{!loading && cryptosHtmlList}</tbody>
       </table>
+      {loading && <LoadingFunctionalComponent text="Loading Functional..." />}
     </>
   );
 };

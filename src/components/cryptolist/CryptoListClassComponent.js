@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { getCryptos } from "../../services/CryptoService";
+import LoadingClassComponent from "../LoadingClassComponent";
 import "../../view/cryptolist.css";
 
 export default class CryptoListClassComponent extends Component {
   constructor() {
     super();
-    this.state = { cryptos: [] };
-    this.retrieveCryptos = async () =>
-      this.setState({ cryptos: await getCryptos() });
+    this.state = { cryptos: [], loading: false };
+    this.retrieveCryptos = async () => {
+      this.setState({ loading: true });
+      this.setState({ cryptos: await getCryptos(), loading: false });
+    };
   }
 
   componentDidMount() {
@@ -28,7 +31,9 @@ export default class CryptoListClassComponent extends Component {
     return (
       <>
         <h1>Class Component</h1>
-        <button onClick={() => this.retrieveCryptos()} className="updateButton">Actualizar</button>
+        <button onClick={() => this.retrieveCryptos()} className="updateButton">
+          Actualizar
+        </button>
         <table style={{ width: "25%", textAlign: "left" }}>
           <thead>
             <tr>
@@ -37,8 +42,12 @@ export default class CryptoListClassComponent extends Component {
               <th>USD Price</th>
             </tr>
           </thead>
-          <tbody>{cryptosHtmlList}</tbody>
+          <tbody>
+            {!this.state.loading && cryptosHtmlList
+              }
+          </tbody>
         </table>
+        {this.state.loading && <LoadingClassComponent text="Loading Class..." />}
       </>
     );
   }
