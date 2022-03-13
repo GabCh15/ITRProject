@@ -1,17 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../view/login.css";
-import {loginFunction} from "../../services/LoginService"
-export const LoginFunctionalComponent = () => {
-  const [login, setLogin] = useState(false);
+import { loginFunction } from "../../services/LoginService";
 
+var useLoginStatus = (loginStatus) => {
+  const [login, setLogin] = useState(null);
+
+  useEffect(() => {
+    setLogin(loginStatus);
+  },[loginStatus]);
+
+  return login;
+};
+
+var useLoginStatusView = (loginStatus) => {
+  var login = useLoginStatus(loginStatus);
+  return <span>{(login && "Logout") || "Login"} in FunctionalComponent</span>;
+};
+
+export const LoginFunctionalComponent = () => {
+  const [loginStatus, setLoginStatus] = useState(false);
+  var loginStatusView = useLoginStatusView(loginStatus);
   return (
     <button
       className="loginButton"
       onClick={async () => {
-        setLogin(await loginFunction(login));
+        setLoginStatus(await loginFunction(loginStatus));
       }}
     >
-      {(login && "Logout") || "Login"} in FunctionalComponent
+      {loginStatusView}
     </button>
   );
 };

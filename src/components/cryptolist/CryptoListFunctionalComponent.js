@@ -11,22 +11,21 @@ export const CryptoListFunctionalComponent = () => {
     setCryptos(await getCryptos());
     setLoading(false);
   };
-  useEffect(() => {
-    if (!cryptos) retrieveCryptos();
-  });
+  var isLoading = () => "Is Loading: " + loading;
+  var updatingCryptos = (isUpdating) => "Is Loading: " + isUpdating;
 
-  var cryptosHtmlList = [];
-  if (cryptos) {
-    cryptos.map((crypto) => {
-      cryptosHtmlList.push(
-        <tr key={crypto.symbol}>
-          <td>{crypto.name} </td>
-          <td>{crypto.symbol} </td>
-          <td>{crypto.usdPrice}</td>
-        </tr>
-      );
-    });
-  }
+  useEffect(() => {
+    retrieveCryptos();
+  }, []);
+
+  useEffect(() => {
+    console.log(isLoading());
+  }, [loading]);
+
+  useEffect(() => {
+    console.log(updatingCryptos(true));
+  }, [cryptos]);
+
   return (
     <>
       <h1>Functional component</h1>
@@ -41,7 +40,16 @@ export const CryptoListFunctionalComponent = () => {
             <th>USD Price</th>
           </tr>
         </thead>
-        <tbody>{!loading && cryptosHtmlList}</tbody>
+        <tbody>
+          {!loading && cryptos &&
+            cryptos.map((crypto) => 
+              <tr key={crypto.symbol}>
+                <td>{crypto.name} </td>
+                <td>{crypto.symbol} </td>
+                <td>{crypto.usdPrice}</td>
+              </tr>
+            )}
+        </tbody>
       </table>
       {loading && <LoadingFunctionalComponent text="Loading Functional..." />}
     </>
