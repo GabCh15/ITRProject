@@ -17,7 +17,7 @@ export const CryptoListFunctionalComponent = () => {
 
   var cryptosHtmlList = [];
   if (cryptos) {
-    cryptos.forEach((crypto) => {
+    cryptos.map((crypto) => {
       cryptosHtmlList.push(
         <tr key={crypto.symbol}>
           <td>{crypto.name} </td>

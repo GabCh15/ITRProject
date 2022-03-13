@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const LoadingFunctionalComponent = (props) => {
+export const LoadingFunctionalComponent = ({text},props) => {
   return (
-    <div>{props.text}</div>
+    <div>{text}</div>
   )
 }
