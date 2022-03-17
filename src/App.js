@@ -1,13 +1,12 @@
 import "./App.css";
-import LoginClassComponent from "./components/login/LoginClassComponent";
-import { LoginFunctionalComponent } from "./components/login/LoginFunctionalComponent";
-import CryptoListClassComponent from "./components/cryptolist/CryptoListClassComponent";
-import { CryptoListFunctionalComponent } from "./components/cryptolist/CryptoListFunctionalComponent.js";
-import Router from './Router'
+import Router from "./Router";
+import { setUserAddress } from "./services/LoginService";
+
 function App() {
+  setUserAddress();
   return (
     <div className="App">
-      <Router/>
+      <Router />
     </div>
   );
 }
