@@ -4,9 +4,24 @@ import CryptoListClassComponent from "./components/cryptolist/CryptoListClassCom
 import { CryptoListFunctionalComponent } from "./components/cryptolist/CryptoListFunctionalComponent.js";
 
 export var routes = [
-  { route:'/', component: <div/>},
-  { route: "loginClass", component: <LoginClassComponent /> },
-  { route: "loginFunctional", component: <LoginFunctionalComponent /> },
-  { route: "cryptoListClass", component: <CryptoListClassComponent /> },
-  { route: "cryptoListFunctional", component: <CryptoListFunctionalComponent /> },
+  {
+    role: "admin",
+    routes: [
+      { route: "/", component: <div /> },
+      { route: "loginClass", component: <LoginClassComponent /> },
+      { route: "loginFunctional", component: <LoginFunctionalComponent /> },
+      { route: "cryptoListClass", component: <CryptoListClassComponent /> },
+      {
+        route: "cryptoListFunctional",
+        component: <CryptoListFunctionalComponent />,
+      },
+    ],
+  },
+  {
+    role: "none",
+    routes: [
+      { route: "/", component: <div /> },
+      { route: "loginClass", component: <LoginClassComponent /> },
+    ],
+  },
 ];
