@@ -5,7 +5,7 @@ import { setUserAddress } from "./services/LoginService";
 function App() {
   setUserAddress();
   return (
-    <div className="App">
+    <div className="container-fluid">
       <Router />
     </div>
   );

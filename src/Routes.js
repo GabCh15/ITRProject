@@ -7,8 +7,10 @@ export var routes = [
   {
     role: "admin",
     routes: [
-      { route: "/", component: <div /> },
-      { route: "loginClass", component: <LoginClassComponent /> },
+      {
+        route: "loginClass",
+        component: <LoginClassComponent className="justify-content-center" />,
+      },
       { route: "loginFunctional", component: <LoginFunctionalComponent /> },
       { route: "cryptoListClass", component: <CryptoListClassComponent /> },
       {
@@ -19,9 +21,6 @@ export var routes = [
   },
   {
     role: "none",
-    routes: [
-      { route: "/", component: <div /> },
-      { route: "loginClass", component: <LoginClassComponent /> },
-    ],
+    routes: [{ route: "loginClass", component: <LoginClassComponent /> }],
   },
 ];
