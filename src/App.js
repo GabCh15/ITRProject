@@ -1,13 +1,12 @@
 import "./App.css";
-import Router from "./Router";
-import { setUserAddress } from "./services/LoginService";
+import Router from "./components/login/Router";
+import { setUserAddress } from "./services/Authentication";
 
 function App() {
   setUserAddress();
   return (
-    <div className="container-fluid">
       <Router />
-    </div>
+
   );
 }
 

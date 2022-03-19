@@ -22,7 +22,6 @@ export const loginFunction = async (isLogged) => {
       window.localStorage.setItem("userAddress", accounts[0]);
       setUserAddress();
     } catch (e) {
-      console.log(e);
       return false;
     }
     return true;
@@ -37,11 +36,10 @@ export const logOutFunction = () => {
 };
 
 export const getRole = (userAddress) => {
-  debugger;
-  if (userAddress == null) return "none";
+  if (userAddress === null) return "none";
   if (
     userAddress != null &&
-    userAddress.toLowerCase() ==
+    userAddress.toLowerCase() ===
       "0x3916AA950d10e30Afd9b0741921eB8705b63702f".toLowerCase()
   )
     return "admin";

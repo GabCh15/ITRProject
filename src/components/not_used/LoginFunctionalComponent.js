@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../view/login.css";
-import { loginFunction } from "../../services/LoginService";
+import { loginFunction } from "../../services/Authentication";
 
 var useLoginStatus = (loginStatus) => {
   const [login, setLogin] = useState(null);

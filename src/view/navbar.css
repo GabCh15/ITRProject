@@ -1,0 +1,24 @@
+
+.btn-outline-light-search {
+  color: #00000045;
+}
+
+.btn-outline-light-search:hover {
+  color: #000 !important;
+}
+
+.nav-item-route {
+  text-decoration: none;
+}
+
+.nav-item-route > span{
+  text-decoration: none;
+  color: black;
+}
+
+.nav-item-route:hover {
+  background:#f3f3f3;
+}
+.nav-item-active {
+  background:#f3f3f3;
+}

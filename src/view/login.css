@@ -1,6 +1,12 @@
 
+.btn-outline-info:hover{
+color:white;
+}
 
-.loginButton {
+.btn-modified:focus{
+  box-shadow: none !important;
+}
+/*.loginButton {
   appearance: none;
   border: none;
   background-color: #0077b6;
@@ -13,4 +19,4 @@
 
 .loginButton:hover {
     opacity: 0.6;
-}
+}*/

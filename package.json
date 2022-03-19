@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
+    "bootstrap-icons": "^1.8.1",
     "fs": "^0.0.1-security",
     "os": "^0.1.2",
     "react": "^17.0.2",
