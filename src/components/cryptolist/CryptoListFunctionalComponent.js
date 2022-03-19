@@ -4,10 +4,10 @@ import { LoadingFunctionalComponent } from "../LoadingFunctionalComponent";
 import "../../view/cryptolist.css";
 
 export const CryptoListFunctionalComponent = () => {
-  var [filter,setFilter] = useState("")
+  var [filter, setFilter] = useState("");
   var [cryptos, setCryptos] = useState(null);
   var [loading, setLoading] = useState(false);
-  
+
   var retrieveCryptos = async (filter) => {
     setLoading(true);
     setCryptos(await getCryptos(filter));
@@ -30,13 +30,12 @@ export const CryptoListFunctionalComponent = () => {
           placeholder="Type a crypto currency name..."
           aria-label="Search"
           vale={filter}
-          onChange={(e)=>{
-            setFilter(e.target.value)
-            retrieveCryptos(e.target.value)}}
+          onChange={(e) => {
+            setFilter(e.target.value);
+            retrieveCryptos(e.target.value);
+          }}
         />
-        <button
-          className="btn btn-outline-light btn-outline-light-search"
-        >
+        <button className="btn btn-outline-light btn-outline-light-search">
           Search
         </button>
       </div>
@@ -44,7 +43,7 @@ export const CryptoListFunctionalComponent = () => {
       <div className="rounded mt-5" style={{ overflow: "hidden" }}>
         <table className="table table-striped">
           <thead>
-            <tr> 
+            <tr>
               <th>Name</th>
               <th>Symbol</th>
               <th>USD Price</th>
@@ -54,11 +53,7 @@ export const CryptoListFunctionalComponent = () => {
           <tbody>
             {!loading &&
               cryptos &&
-              cryptos.map((crypto) => (
-                <>
-                  <CryptoItem crypto={crypto} />
-                </>
-              ))}
+              cryptos.map((crypto) => <CryptoItem crypto={crypto} key={crypto.symbol} />)}
           </tbody>
         </table>
       </div>
@@ -80,11 +75,7 @@ export var CryptoItem = (props) => {
   var { crypto } = props;
   return (
     <>
-      <tr
-        role="button"
-        key={crypto.symbol}
-        onClick={() => setIsHidden(!isHidden)}
-      >
+      <tr role="button" onClick={() => setIsHidden(!isHidden)}>
         <td>{crypto.name} </td>
         <td>{crypto.symbol} </td>
         <td>{crypto.usdPrice}</td>
@@ -95,7 +86,7 @@ export var CryptoItem = (props) => {
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-caret-down-fill"
+              className="bi bi-caret-down-fill"
               viewBox="0 0 16 16"
             >
               <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
@@ -106,7 +97,7 @@ export var CryptoItem = (props) => {
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-caret-left-fill"
+              className="bi bi-caret-left-fill"
               viewBox="0 0 16 16"
             >
               <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />

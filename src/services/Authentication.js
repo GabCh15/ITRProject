@@ -2,6 +2,7 @@ import Web3 from "web3";
 
 window.userAddress = null;
 window.role = null;
+
 export const setUserAddress = () => {
   window.userAddress = window.localStorage.getItem("userAddress");
   window.role = getRole(window.userAddress);
@@ -40,7 +41,7 @@ export const getRole = (userAddress) => {
   if (
     userAddress != null &&
     userAddress.toLowerCase() ===
-      "0x3916AA950d10e30Afd9b0741921eB8705b63702f".toLowerCase()
+      "0x3916".toLowerCase()
   )
     return "admin";
   return "user";
